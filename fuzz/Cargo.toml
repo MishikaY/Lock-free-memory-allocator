@@ -1,0 +1,38 @@
+[package]
+edition = "2024"
+name = "ferroc-fuzz"
+publish = false
+version = "0.0.0"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+arbitrary = {version = "1", features = ["derive"]}
+ctor = "0.2"
+libfuzzer-sys = "0.4"
+scoped-tls = "1.0"
+
+[dependencies.ferroc]
+path = ".."
+
+[[bin]]
+bench = false
+doc = false
+name = "stress"
+path = "fuzz_targets/stress.rs"
+test = false
+
+[[bin]]
+bench = false
+doc = false
+name = "stress_local"
+path = "fuzz_targets/stress_local.rs"
+test = false
+
+[[bin]]
+bench = false
+doc = false
+name = "custom"
+path = "fuzz_targets/custom.rs"
+test = false
